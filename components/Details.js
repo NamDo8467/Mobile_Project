@@ -10,7 +10,7 @@ function Details({ route, navigation }) {
 	}
 
 	const handleShowMap = () => {
-		navigation.navigate("Maps")
+		navigation.navigate("Maps", { address })
 	}
 	return (
 		<View style={styles.container}>
@@ -49,12 +49,10 @@ function Details({ route, navigation }) {
 				<Text style={styles.tags}>Description: </Text>
 				<Text style={styles.tag}>{description}</Text>
 			</View>
-			
 		</View>
 	)
 }
 const styles = StyleSheet.create({
-	
 	container: {
 		width: "100%"
 	},
