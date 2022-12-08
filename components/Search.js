@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import data from "../database.json"
+import { RestaurantList } from "./RestaurantContext"
 import { View, Text, TextInput, StyleSheet, Pressable, FlatList } from "react-native"
 import SearchItem from "./SearchItem"
 
@@ -7,20 +8,21 @@ function Search({ navigation }) {
 	const [searchBy, setSearchBy] = useState("name")
 	const [restaurants, setRestaurants] = useState([])
 	const [searchRestaurant, setSearchRestaurant] = useState("")
+	let { restaurantList, setRestaurantList } = useContext(RestaurantList)
 
 	useEffect(() => {
-		setRestaurants(data)
-	}, [])
+		setRestaurants(restaurantList)
+	}, [restaurantList])
 	const handleSearch = async value => {
 		setSearchRestaurant(value)
 		if (searchBy === "name") {
-			const results = data.filter(restaurant => {
+			const results = restaurantList.filter(restaurant => {
 				return restaurant.name.toLowerCase().includes(value.toLowerCase()) || value === ""
 			})
 
 			setRestaurants(results)
 		} else if (searchBy === "tag") {
-			const results = data.filter(restaurant => {
+			const results = restaurantList.filter(restaurant => {
 				return restaurant.tags.includes(value.toLowerCase()) || value === ""
 			})
 

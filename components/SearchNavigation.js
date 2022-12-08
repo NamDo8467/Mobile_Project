@@ -9,9 +9,6 @@ export default function SearchNavigation() {
 	return (
 		<Stack.Navigator
 			initialRouteName='Search'
-			// screenOptions={{
-			// 	headerShown: true
-			// }}
 		>
 			<Stack.Screen
 				name='Search'

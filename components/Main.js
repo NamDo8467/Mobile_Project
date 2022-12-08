@@ -2,8 +2,8 @@ import React from "react"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import Home from "./Home"
-import Search from "./Search"
 import About from "./About"
+import AddNavigation from "./AddNavigation"
 import SearchNavigation from "./SearchNavigation"
 const Tab = createBottomTabNavigator()
 function Main() {
@@ -17,7 +17,7 @@ function Main() {
 						iconName = focused ? "ios-home" : "ios-home-outline"
 					} else if (route.name === "SearchNavigation") {
 						iconName = focused ? "ios-search" : "ios-search-outline"
-					} else if (route.name === "Add") {
+					} else if (route.name === "AddNavigation") {
 						iconName = focused ? "ios-add" : "ios-add-outline"
 					} else if (route.name === "About") {
 						iconName = focused ? "ios-people" : "ios-people-outline"
@@ -38,7 +38,7 @@ function Main() {
 		>
 			<Tab.Screen name='Home' component={Home} />
 			<Tab.Screen name='SearchNavigation' component={SearchNavigation} options={{ title: "Search" }} />
-			<Tab.Screen name='Add' component={Home} />
+			<Tab.Screen name='AddNavigation' options={{ title: "Add" }} component={AddNavigation} />
 			<Tab.Screen name='About' component={About} />
 		</Tab.Navigator>
 	)
