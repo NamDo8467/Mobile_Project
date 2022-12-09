@@ -1,11 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { View, Text, Image, StyleSheet, Pressable, Button, Modal, ScrollView } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import Rating from "./Rating"
+import { RestaurantList } from "./RestaurantContext"
 
 function Details({ route, navigation }) {
 	const { name, tags, rating, phone, address, description, id } = route.params
 	const [visible, setVisible] = useState(false)
+	const { restaurantList, setRestaurantList } = useContext(RestaurantList)
 	let stars = []
 	for (let i = 0; i < rating; i++) {
 		stars.push(<Ionicons key={i} name={"ios-star"} color={"#554AF0"} size={20} />)
@@ -20,6 +22,12 @@ function Details({ route, navigation }) {
 
 	const handleShowRating = () => {
 		setVisible(true)
+	}
+
+	const handleDelete = () => {
+		let newRestaurantList = restaurantList.filter(restaurant => restaurant.id != id)
+		setRestaurantList(newRestaurantList)
+		navigation.navigate("Search")
 	}
 	return (
 		<ScrollView style={styles.container}>
@@ -66,6 +74,10 @@ function Details({ route, navigation }) {
 			<View>
 				<Text style={styles.tags}>Description: </Text>
 				<Text style={styles.tag}>{description}</Text>
+			</View>
+
+			<View>
+				<Button title='Delete' color='#e50c0c' onPress={handleDelete}></Button>
 			</View>
 		</ScrollView>
 	)
