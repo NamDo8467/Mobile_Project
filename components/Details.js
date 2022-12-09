@@ -1,12 +1,15 @@
 import React from "react"
-import { View, Text, Image, StyleSheet, Pressable } from "react-native"
+import { View, Text, Image, StyleSheet, Pressable, Button } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
 
 function Details({ route, navigation }) {
-	const { name, tags, rating, phone, address, description } = route.params
+	const { name, tags, rating, phone, address, description, id } = route.params
 	let stars = []
 	for (let i = 0; i < rating; i++) {
 		stars.push(<Ionicons key={i} name={"ios-star"} color={"#554AF0"} size={20} />)
+	}
+	const handleEdit = () => {
+		navigation.navigate("Edit", { name, tags, phone, description, id })
 	}
 
 	const handleShowMap = () => {
@@ -17,8 +20,13 @@ function Details({ route, navigation }) {
 			<View style={{ width: "100%" }}>
 				<Image source={require("../assets/restaurant.jpg")} style={{ width: "100%" }}></Image>
 			</View>
-			<View>
-				<Text style={styles.restaurantName}>{name}</Text>
+			<View style={{ flexDirection: "row", justifyContent: "space-between", paddingRight: 20 }}>
+				<View>
+					<Text style={styles.restaurantName}>{name}</Text>
+				</View>
+				<View>
+					<Button title='Edit' onPress={handleEdit}></Button>
+				</View>
 			</View>
 			<View style={styles.stars}>
 				<View style={{ flexDirection: "row" }}>{stars}</View>
@@ -62,6 +70,7 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
 		marginTop: 5,
 		marginLeft: 5
+		// textAlign: "center",
 	},
 	stars: {
 		marginTop: 5,

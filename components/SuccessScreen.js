@@ -1,7 +1,7 @@
-import React, {useEffect} from "react"
+import React, {useEffect, useContext} from "react"
 import { View, Text, StyleSheet } from "react-native"
 import Ionicon from "react-native-vector-icons/Ionicons"
-
+import RestaurantContext from './RestaurantContext'
 function SuccessScreen({ navigation }) {
 	useEffect(() => {
 		setTimeout(() => {

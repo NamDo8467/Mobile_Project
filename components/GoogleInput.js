@@ -5,6 +5,7 @@ const GOOGLE_PLACES_API_KEY = "AIzaSyCA0cDy_zq1oqRi8b55FARtcNAAgCTzFjc" // never
 
 const GoogleInput = props => {
 	const placesRef = useRef()
+	
 	const onChange = () => {
 		props.onChange(placesRef.current?.getAddressText())
 	}
@@ -23,6 +24,7 @@ const GoogleInput = props => {
 					url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api",
 					useOnPlatform: "web"
 				}} // this in only required for use on the web. See https://git.io/JflFv more for details.
+				
 			/>
 		</View>
 	)

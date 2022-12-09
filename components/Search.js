@@ -8,7 +8,7 @@ function Search({ navigation }) {
 	const [searchBy, setSearchBy] = useState("name")
 	const [restaurants, setRestaurants] = useState([])
 	const [searchRestaurant, setSearchRestaurant] = useState("")
-	let { restaurantList, setRestaurantList } = useContext(RestaurantList)
+	let { restaurantList } = useContext(RestaurantList)
 
 	useEffect(() => {
 		setRestaurants(restaurantList)
@@ -72,14 +72,14 @@ function Search({ navigation }) {
 			</View>
 			<View style={styles.result}>
 				<FlatList
-					data={restaurants}
+					data={restaurantList}
 					renderItem={({ item }) => {
 						return (
 							<SearchItem
-								key={item.name}
+								id={item.id}
 								name={item.name}
 								tags={item.tags}
-								rating={item.rating}
+								rating={item.rating} 
 								phone={item.phone}
 								navigation={navigation}
 								address={item.address}
@@ -87,6 +87,7 @@ function Search({ navigation }) {
 							/>
 						)
 					}}
+					keyExtractor={item => item.id.toString()}
 				></FlatList>
 			</View>
 		</View>

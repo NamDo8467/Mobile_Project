@@ -2,14 +2,14 @@ import React from "react"
 import { View, StyleSheet, Image, Text, Pressable } from "react-native"
 
 import Ionicons from "@expo/vector-icons/Ionicons"
-function SearchItem({ name, tags, rating, phone, address, navigation, description }) {
+function SearchItem({ name, tags, rating, phone, address, navigation, description, id}) {
 	let stars = []
 	for (let i = 0; i < rating; i++) {
 		stars.push(<Ionicons key={i} name={"ios-star"} color={"#554AF0"} />)
 	}
 
 	const handleDetails = () => {
-		navigation.navigate("Details", { name, tags, rating, phone, address , description})
+		navigation.navigate("Details", { name, tags, rating, phone, address , description, id})
 	}
 	return (
 		<Pressable onPress={handleDetails}>
