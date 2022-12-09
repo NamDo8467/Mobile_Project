@@ -10,7 +10,7 @@ export default function App() {
 		<RestaurantContext>
 			<NavigationContainer>
 				<Stack.Navigator
-					initialRouteName='Main'
+					initialRouteName='Loading'
 					screenOptions={{
 						headerShown: false
 					}}
