@@ -72,7 +72,7 @@ function Search({ navigation }) {
 			</View>
 			<View style={styles.result}>
 				<FlatList
-					data={restaurantList}
+					data={restaurants}
 					renderItem={({ item }) => {
 						return (
 							<SearchItem

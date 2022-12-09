@@ -60,7 +60,7 @@ export default function Edit({ navigation, route }) {
 						setRestaurantList(newRestaurantList)
 
 						actions.resetForm()
-						console.log(restaurantList)
+						// console.log(restaurantList)
 						setAddress("")
 
 						navigation.navigate("EditSuccess", { newRestaurantList })
