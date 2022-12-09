@@ -1,9 +1,11 @@
-import React from "react"
-import { View, Text, Image, StyleSheet, Pressable, Button } from "react-native"
+import React, { useState } from "react"
+import { View, Text, Image, StyleSheet, Pressable, Button, Modal, ScrollView } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
+import Rating from "./Rating"
 
 function Details({ route, navigation }) {
 	const { name, tags, rating, phone, address, description, id } = route.params
+	const [visible, setVisible] = useState(false)
 	let stars = []
 	for (let i = 0; i < rating; i++) {
 		stars.push(<Ionicons key={i} name={"ios-star"} color={"#554AF0"} size={20} />)
@@ -15,8 +17,13 @@ function Details({ route, navigation }) {
 	const handleShowMap = () => {
 		navigation.navigate("Maps", { address })
 	}
+
+	const handleShowRating = () => {
+		setVisible(true)
+	}
 	return (
-		<View style={styles.container}>
+		<ScrollView style={styles.container}>
+			<Rating visible={visible} id={id} setVisible={setVisible} navigation={navigation} />
 			<View style={{ width: "100%" }}>
 				<Image source={require("../assets/restaurant.jpg")} style={{ width: "100%" }}></Image>
 			</View>
@@ -30,6 +37,9 @@ function Details({ route, navigation }) {
 			</View>
 			<View style={styles.stars}>
 				<View style={{ flexDirection: "row" }}>{stars}</View>
+				<View style={{ flexDirection: "row" }}>
+					<Button title='Rate' onPress={handleShowRating}></Button>
+				</View>
 			</View>
 			<View>
 				<Text style={styles.tags}>Tags: </Text>
@@ -57,7 +67,7 @@ function Details({ route, navigation }) {
 				<Text style={styles.tags}>Description: </Text>
 				<Text style={styles.tag}>{description}</Text>
 			</View>
-		</View>
+		</ScrollView>
 	)
 }
 const styles = StyleSheet.create({
