@@ -1,5 +1,6 @@
 [
 	{
+		"id": 1,
 		"name": "Michael's On Simcoe",
 		"address": "100 Simcoe St C111, Toronto, ON M5H 3G2",
 		"phone": "416-260-5100",
@@ -8,6 +9,7 @@
 		"rating": 4
 	},
 	{
+		"id": 2,
 		"name": "DaiLo",
 		"address": "503 College St, Toronto, ON M6G 1A5",
 		"phone": "647-341-8882",
